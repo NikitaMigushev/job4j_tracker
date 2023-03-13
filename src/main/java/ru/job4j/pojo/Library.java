@@ -25,7 +25,6 @@ public class Library {
             Book b = books[i];
             if ("Clean Code".equals(b.getName())) {
                 System.out.println(b.getName());
-                break;
             }
         }
     }
