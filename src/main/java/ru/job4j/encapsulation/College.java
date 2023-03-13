@@ -9,6 +9,8 @@ public class College {
         student.setGroup(1);
         student.setAdmissionDate(new Date());
 
-        System.out.println("Student " + student.getFullName() + " is in Group: " + student.getGroup() + " admission date: " + student.getAdmissionDate());
+        System.out.println("Student " + student.getFullName()
+                + " is in Group: " + student.getGroup()
+                + " admission date: " + student.getAdmissionDate());
     }
 }
