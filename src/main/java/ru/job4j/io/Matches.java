@@ -21,6 +21,7 @@ public class Matches {
                 System.out.println("Замечательно. Осталось " + count + " спичек.");
             }
         }
+
         if (!turn) {
             System.out.println("Выигрыл первый игрок");
         } else {
