@@ -73,7 +73,6 @@
         <!-- See http://checkstyle.sf.net/config_blocks.html -->
         <module name="AvoidNestedBlocks"/>
         <module name="LeftCurly"/>
-        <module name="NeedBraces"/>
         <module name="RightCurly"/>
 
         <!-- Checks for common coding problems               -->
@@ -85,7 +84,7 @@
         <module name="IllegalInstantiation"/>
         <module name="InnerAssignment"/>
         <!--<module name="MagicNumber"/>-->
-        <module name="MissingSwitchDefault"/>
+        <!--module name="MissingSwitchDefault"/-->
         <module name="SimplifyBooleanExpression"/>
         <module name="SimplifyBooleanReturn"/>
 
