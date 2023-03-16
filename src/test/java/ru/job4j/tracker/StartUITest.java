@@ -76,7 +76,7 @@ public class StartUITest {
         Item one = tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
         Input in = new StubInput(
-                new String[] {"0", String.valueOf(one.getId()), replaceName, "1"}
+                new String[]{"0", String.valueOf(one.getId()), replaceName, "1"}
         );
         UserAction[] actions = new UserAction[]{
                 new EditAction(out),
@@ -93,6 +93,124 @@ public class StartUITest {
                         + "Menu:" + ln
                         + "0. Edit Item" + ln
                         + "1. Exit" + ln
+                        + "=== Have a nice day! ===" + ln
+        );
+    }
+
+    @Test
+    public void whenFindAllAction() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item itemOne = new Item("test5");
+        Item itemTwo = new Item("test6");
+        Input in = new StubInput(
+                new String[]{"0", String.valueOf(itemOne.getName()), "0",
+                        String.valueOf(itemTwo.getName()), "1", "2"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new CreateAction(out),
+                new FindAllAction(out),
+                new ExitAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        Assertions.assertThat(out.toString()).isEqualTo(
+                "Menu:" + ln
+                        + "0. Add new Item" + ln
+                        + "1. Find all Items" + ln
+                        + "2. Exit" + ln
+                        + "=== Create a new Item ===" + ln
+                        + "Добавленная заявка: " + tracker.findAll()[0] + ln
+                        + "Menu:" + ln
+                        + "0. Add new Item" + ln
+                        + "1. Find all Items" + ln
+                        + "2. Exit" + ln
+                        + "=== Create a new Item ===" + ln
+                        + "Добавленная заявка: " + tracker.findAll()[1] + ln
+                        + "Menu:" + ln
+                        + "0. Add new Item" + ln
+                        + "1. Find all Items" + ln
+                        + "2. Exit" + ln
+                        + "=== Show all items ===" + ln
+                        + tracker.findAll()[0] + ln
+                        + tracker.findAll()[1] + ln
+                        + "Menu:" + ln
+                        + "0. Add new Item" + ln
+                        + "1. Find all Items" + ln
+                        + "2. Exit" + ln
+                        + "=== Have a nice day! ===" + ln
+
+        );
+    }
+
+    @Test
+    public void whenFindByIdAction() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item itemOne = new Item("test5");
+        Input in = new StubInput(
+                new String[]{"0", String.valueOf(itemOne.getName()), "1", "1", "2"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new CreateAction(out),
+                new FindByIdAction(out),
+                new ExitAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        Assertions.assertThat(out.toString()).isEqualTo(
+                "Menu:" + ln
+                        + "0. Add new Item" + ln
+                        + "1. Find by Id" + ln
+                        + "2. Exit" + ln
+                        + "=== Create a new Item ===" + ln
+                        + "Добавленная заявка: " + tracker.findAll()[0] + ln
+                        + "Menu:" + ln
+                        + "0. Add new Item" + ln
+                        + "1. Find by Id" + ln
+                        + "2. Exit" + ln
+                        + "=== Find item by id ===" + ln
+                        + tracker.findAll()[0] + ln
+                        + "Menu:" + ln
+                        + "0. Add new Item" + ln
+                        + "1. Find by Id" + ln
+                        + "2. Exit" + ln
+                        + "=== Have a nice day! ===" + ln
+        );
+    }
+
+    @Test
+    public void whenFindByNameAction() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item itemOne = new Item("test5");
+        Input in = new StubInput(
+                new String[]{"0", String.valueOf(itemOne.getName()), "1", "test5", "2"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new CreateAction(out),
+                new FindByNameAction(out),
+                new ExitAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        Assertions.assertThat(out.toString()).isEqualTo(
+                "Menu:" + ln
+                        + "0. Add new Item" + ln
+                        + "1. Find by Name" + ln
+                        + "2. Exit" + ln
+                        + "=== Create a new Item ===" + ln
+                        + "Добавленная заявка: " + tracker.findAll()[0] + ln
+                        + "Menu:" + ln
+                        + "0. Add new Item" + ln
+                        + "1. Find by Name" + ln
+                        + "2. Exit" + ln
+                        + "=== Find items by name ===" + ln
+                        + tracker.findAll()[0] + ln
+                        + "Menu:" + ln
+                        + "0. Add new Item" + ln
+                        + "1. Find by Name" + ln
+                        + "2. Exit" + ln
                         + "=== Have a nice day! ===" + ln
         );
     }
