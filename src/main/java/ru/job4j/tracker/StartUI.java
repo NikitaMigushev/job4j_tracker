@@ -7,25 +7,20 @@ public class StartUI {
         this.out = out;
     }
 
-    private void showMenu() {
-        String[] menu = {
-                "Add new Item", "Show all items", "Edit item",
-                "Delete item", "Find item by id", "Find items by name",
-                "Exit Program"
-        };
-        System.out.println("Menu:");
-        for (int i = 0; i < menu.length; i++) {
-            System.out.println(i + ". " + menu[i]);
-        }
-    }
-
     public void init(Input input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
         while (run) {
-            showMenu();
+            this.showMenu(actions);
             int select = input.askInt("Select: ");
             UserAction action = actions[select];
             run = action.execute(input, tracker);
+        }
+    }
+
+    private void showMenu(UserAction[] actions) {
+        out.println("Menu:");
+        for (int i = 0; i < actions.length; i++) {
+            out.println(i + ". " + actions[i].name());
         }
     }
 
