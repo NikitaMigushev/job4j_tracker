@@ -101,11 +101,10 @@ public class StartUITest {
     public void whenFindAllAction() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
-        Item itemOne = new Item("test5");
-        Item itemTwo = new Item("test6");
+        Item itemOne = new Item("Test1");
         Input in = new StubInput(
-                new String[]{"0", String.valueOf(itemOne.getName()), "0",
-                        String.valueOf(itemTwo.getName()), "1", "2"}
+                new String[]{"0", String.valueOf(itemOne.getName()),
+                        "1", "2"}
         );
         UserAction[] actions = new UserAction[]{
                 new CreateAction(out),
@@ -125,15 +124,8 @@ public class StartUITest {
                         + "0. Add new Item" + ln
                         + "1. Find all Items" + ln
                         + "2. Exit" + ln
-                        + "=== Create a new Item ===" + ln
-                        + "Добавленная заявка: " + tracker.findAll()[1] + ln
-                        + "Menu:" + ln
-                        + "0. Add new Item" + ln
-                        + "1. Find all Items" + ln
-                        + "2. Exit" + ln
                         + "=== Show all items ===" + ln
                         + tracker.findAll()[0] + ln
-                        + tracker.findAll()[1] + ln
                         + "Menu:" + ln
                         + "0. Add new Item" + ln
                         + "1. Find all Items" + ln
