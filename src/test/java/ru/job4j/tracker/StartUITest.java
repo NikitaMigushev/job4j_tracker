@@ -116,7 +116,7 @@ public class StartUITest {
                         + "0. Find all Items" + ln
                         + "1. Exit" + ln
                         + "=== Show all items ===" + ln
-                        + tracker.findAll()[0] + ln
+                        + itemOne + ln
                         + "Menu:" + ln
                         + "0. Find all Items" + ln
                         + "1. Exit" + ln
@@ -143,7 +143,7 @@ public class StartUITest {
                         + "0. Find by Id" + ln
                         + "1. Exit" + ln
                         + "=== Find item by id ===" + ln
-                        + tracker.findAll()[0] + ln
+                        + itemOne + ln
                         + "Menu:" + ln
                         + "0. Find by Id" + ln
                         + "1. Exit" + ln
@@ -170,7 +170,7 @@ public class StartUITest {
                         + "0. Find by Name" + ln
                         + "1. Exit" + ln
                         + "=== Find items by name ===" + ln
-                        + tracker.findAll()[0] + ln
+                        + itemOne + ln
                         + "Menu:" + ln
                         + "0. Find by Name" + ln
                         + "1. Exit" + ln
