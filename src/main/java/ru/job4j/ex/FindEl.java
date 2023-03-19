@@ -20,8 +20,14 @@ public class FindEl {
             if (indexOf(values, key) != 1) {
                 sent(key, abuses);
             }
+        } catch (ElementAbuseException ea) {
+            ea.printStackTrace();
+        } catch (ElementNotFoundException en) {
+            en.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
+        } catch (Throwable th) {
+            th.printStackTrace();
         }
     }
 
