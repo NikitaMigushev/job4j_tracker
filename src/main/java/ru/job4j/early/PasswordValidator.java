@@ -26,18 +26,21 @@ public class PasswordValidator {
         boolean hasLowerLatinLetter = false;
         boolean hasDigit = false;
         boolean hasSpecialSymbol = false;
-        for (int i = 0; i < pass.length(); i++) {
-            if (Character.isLowerCase(pass.charAt(i))) {
+        for (char ch : pass.toCharArray()) {
+            if (Character.isLowerCase(ch)) {
                 hasLowerLatinLetter = true;
             }
-            if (Character.isUpperCase(pass.charAt(i))) {
+            if (Character.isUpperCase(ch)) {
                 hasUpperCaseLetter = true;
             }
-            if (Character.isDigit(pass.charAt(i))) {
+            if (Character.isDigit(ch)) {
                 hasDigit = true;
             }
-            if (!Character.isDigit(pass.charAt(i)) && !Character.isLetter(pass.charAt(i))) {
+            if (!Character.isDigit(ch) && !Character.isLetter(ch)) {
                 hasSpecialSymbol = true;
+            }
+            if (hasUpperCaseLetter && hasLowerLatinLetter && hasDigit && hasSpecialSymbol) {
+                break;
             }
         }
         if (!hasUpperCaseLetter) {
