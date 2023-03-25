@@ -5,11 +5,9 @@ public class SingleTrackerMain {
         SingleTracker singleTracker = SingleTracker.getInstance();
         singleTracker.add(new Item("Test1"));
         singleTracker.add(new Item("Test2"));
-        System.out.println(singleTracker.findAll()[0].getName());
-        System.out.println(singleTracker.findAll()[1].getName());
+        System.out.println(singleTracker.findAll());
+        System.out.println(singleTracker.findAll());
         SingleTracker anotherSingleTracker = SingleTracker.getInstance();
         anotherSingleTracker.add(new Item("Test3"));
-        System.out.println(singleTracker.findAll()[2].getName());
-        System.out.println(anotherSingleTracker.findAll()[2].getName());
     }
 }

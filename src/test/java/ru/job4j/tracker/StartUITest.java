@@ -18,7 +18,7 @@ public class StartUITest {
                 new ExitAction(output)
         };
         new StartUI(output).init(in, tracker, actions);
-        Assertions.assertThat(tracker.findAll()[0].getName()).isEqualTo("Item name");
+        Assertions.assertThat(tracker.findAll().get(0).getName()).isEqualTo("Item name");
     }
 
     @Test
@@ -33,7 +33,7 @@ public class StartUITest {
                 new ExitAction(output)
         };
         new StartUI(output).init(in, tracker, actions);
-        Assertions.assertThat(tracker.findAll()[0].getName()).isEqualTo("Fix PC");
+        Assertions.assertThat(tracker.findAll().get(0).getName()).isEqualTo("Fix PC");
     }
 
     @Test
@@ -50,7 +50,7 @@ public class StartUITest {
                 new ExitAction(output)
         };
         new StartUI(output).init(in, tracker, actions);
-        Assertions.assertThat(tracker.findAll()[0].getName()).isEqualTo("New item name");
+        Assertions.assertThat(tracker.findAll().get(0).getName()).isEqualTo("New item name");
     }
 
     @Test
