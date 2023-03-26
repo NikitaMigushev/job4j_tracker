@@ -8,6 +8,17 @@ public class Tracker {
     private int ids = 1;
     private int size = 0;
 
+    private int indexOf(int id) {
+        int rsl = -1;
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getId() == id) {
+                rsl = i;
+                break;
+            }
+        }
+        return rsl;
+    }
+
     public Item add(Item item) {
         item.setId(ids++);
         items.add(item);
@@ -29,39 +40,31 @@ public class Tracker {
     }
 
     public Item findById(int id) {
-        for (Item element : items) {
-            if (element.getId() == id) {
-                return element;
-            }
+        int index = indexOf(id);
+        if (index != -1) {
+            return items.get(index);
+        } else {
+            return null;
         }
-        return null;
     }
 
     public boolean replace(int id, Item item) {
         boolean rsl = false;
-        int index = 0;
-        for (Item element : items) {
-            if (element.getId() == id) {
-                items.set(index, item);
-                item.setId(id);
-                rsl = true;
-                break;
-            }
-            index++;
+        int index = indexOf(id);
+        if (index != -1) {
+            items.set(index, item);
+            item.setId(id);
+            rsl = true;
         }
         return rsl;
     }
 
     public boolean delete(int id) {
         boolean rsl = false;
-        int index = 0;
-        for (Item element : items) {
-            if (element.getId() == id) {
-                items.remove(index);
-                rsl = true;
-                break;
-            }
-            index++;
+        int index = indexOf(id);
+        if (index != -1) {
+            items.remove(index);
+            rsl = true;
         }
         return rsl;
     }

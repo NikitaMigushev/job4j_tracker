@@ -1,4 +1,4 @@
-package ru.job4j.search;
+package ru.job4j.poly.search;
 
 public class Task {
     private String desc;
