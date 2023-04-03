@@ -2,6 +2,8 @@ package ru.job4j.collection;
 
 import java.util.Objects;
 
+import static java.lang.Integer.compare;
+
 public class User implements Comparable<User> {
     private String name;
     private int age;
@@ -13,7 +15,10 @@ public class User implements Comparable<User> {
 
     @Override
     public int compareTo(User o) {
-        return (this.age - o.age);
+        if (this.name.compareTo(o.name) == 0) {
+            return compare(this.age, o.age);
+        }
+        return this.name.compareTo(o.name);
     }
 
     @Override
