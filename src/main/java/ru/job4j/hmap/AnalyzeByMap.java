@@ -35,7 +35,8 @@ public class AnalyzeByMap {
         Map<String, Double> scoreBySubject = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                scoreBySubject.put(subject.name(), scoreBySubject.get(subject.name()) == null ? subject.score() :
+                scoreBySubject.put(subject.name(), scoreBySubject.get(subject.name()) == null ? subject.score()
+                        :
                         scoreBySubject.get(subject.name()) + subject.score());
             }
         }
@@ -63,7 +64,8 @@ public class AnalyzeByMap {
         Map<String, Double> scoreBySubject = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                scoreBySubject.put(subject.name(), scoreBySubject.get(subject.name()) == null ? subject.score() :
+                scoreBySubject.put(subject.name(), scoreBySubject.get(subject.name()) == null ? subject.score()
+                        :
                         scoreBySubject.get(subject.name()) + subject.score());
             }
         }

@@ -22,6 +22,7 @@ public class CarService {
             case IN_WORK -> System.out.println("Статус: Автомобиль в работе");
             case WAITING -> System.out.println("Статус: Автомобиль ожидает запчасти");
             case FINISHED -> System.out.println("Статус: Все работы завершены");
+            default -> System.out.println("Не определено");
         }
     }
 }
