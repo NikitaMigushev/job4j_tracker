@@ -4,6 +4,6 @@ public class CompareToUsage {
     public static void main(String[] args) {
         String myStr1 = "Petrov";
         String myStr2 = "Ivanova";
-        System.out.println(myStr1.compareTo(myStr2)); // Returns 0 because they are equal
+        System.out.println(myStr1.compareTo(myStr2));
     }
 }
