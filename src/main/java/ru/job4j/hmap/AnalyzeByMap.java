@@ -61,15 +61,14 @@ public class AnalyzeByMap {
 
     public static Label bestSubject(List<Pupil> pupils) {
         List<Label> result = new ArrayList<>();
-        Map<String, Double> scoreBySubject = new LinkedHashMap<>();
+        Map<String, Integer> scoreBySubject = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                scoreBySubject.put(subject.name(), scoreBySubject.get(subject.name()) == null ? subject.score()
-                        :
-                        scoreBySubject.get(subject.name()) + subject.score());
+                scoreBySubject.put(
+                        subject.name(), scoreBySubject.getOrDefault(subject.name(), 0) + subject.score());
             }
         }
-        for (Map.Entry<String, Double> entry : scoreBySubject.entrySet()) {
+        for (Map.Entry<String, Integer> entry : scoreBySubject.entrySet()) {
             result.add(new Label(entry.getKey(), entry.getValue()));
         }
         result.sort(Comparator.naturalOrder());
