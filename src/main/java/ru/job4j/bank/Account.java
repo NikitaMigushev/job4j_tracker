@@ -2,8 +2,21 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Класс описывает модель данных счета пользователя.
+ *
+ * @author Nikita Migushev
+ * @version 1.0
+ */
+
 public class Account {
+    /**
+     * Поле номер счета
+     */
     private String requisite;
+    /**
+     * Поле баланс счета
+     */
     private double balance;
 
     public Account(String requisite, double balance) {
@@ -32,7 +45,7 @@ public class Account {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass())  {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         Account account = (Account) o;

@@ -1,4 +1,4 @@
-package ru.job4j.poly.search;
+package ru.job4j.search;
 
 public class Person {
     private String name;

@@ -1,8 +1,6 @@
 package ru.job4j.search;
 
 import org.junit.jupiter.api.Test;
-import ru.job4j.poly.search.Person;
-import ru.job4j.poly.search.PhoneDictionary;
 
 import java.util.ArrayList;
 
