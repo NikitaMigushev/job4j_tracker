@@ -16,11 +16,8 @@ public class Departments {
             String start = "";
             boolean first = true;
             for (String el : value.split("/")) {
-                int i = 0;
-                String composeDep = first ? start + el : start + "/" + el;
-                tmp.add(composeDep);
-                start = composeDep;
-                first = false;
+                start += "".equals(start) ? el : "/" + el;
+                tmp.add(start);
             }
         }
         return new ArrayList<>(tmp);
