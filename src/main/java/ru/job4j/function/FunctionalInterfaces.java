@@ -21,10 +21,7 @@ public class FunctionalInterfaces {
             System.out.println(set.getKey() + " = " + set.getValue());
         }
         BiPredicate<Integer, String> biPred = (i, s) -> {
-            if (i % 2 == 0 || s.length() == 4) {
-                return true;
-            }
-            return false;
+            return i % 2 == 0 || s.length() == 4;
         };
         for (Integer i : map.keySet()) {
             if (biPred.test(i, map.get(i))) {
