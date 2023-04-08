@@ -20,9 +20,7 @@ public class FunctionalInterfaces {
         for (Map.Entry<Integer, String> set : map.entrySet()) {
             System.out.println(set.getKey() + " = " + set.getValue());
         }
-        BiPredicate<Integer, String> biPred = (i, s) -> {
-            return i % 2 == 0 || s.length() == 4;
-        };
+        BiPredicate<Integer, String> biPred = (i, s) -> i % 2 == 0 || s.length() == 4;
         for (Integer i : map.keySet()) {
             if (biPred.test(i, map.get(i))) {
                 System.out.println("key: " + i + " value: " + map.get(i));
