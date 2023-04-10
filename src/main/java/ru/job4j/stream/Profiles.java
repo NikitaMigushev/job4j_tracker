@@ -15,6 +15,19 @@ public class Profiles {
                 .map(Profile::getAddress)
                 .collect(Collectors.toList());
     }
+
+    /**
+     * Method transforms list of profiles into list of addresses without
+     * @param profiles
+     * @return
+     */
+    public static List<Address> collectSortWithoutDuplicate(List<Profile> profiles) {
+        return profiles.stream()
+                .map(Profile::getAddress)
+                .sorted(new ProfileAscByAddress())
+                .distinct()
+                .collect(Collectors.toList());
+    }
 }
 
 
