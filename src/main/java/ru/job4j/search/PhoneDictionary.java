@@ -12,12 +12,16 @@ public class PhoneDictionary {
 
     public ArrayList<Person> find(String key) {
         ArrayList<Person> result = new ArrayList<>();
-        Predicate<Person> combine = p -> p.getName().contains(key)
-                || p.getSurname().contains(key)
-                || p.getAddress().contains(key)
-                || p.getPhone().contains(key);
+        Predicate<Person> compareByName = p -> p.getName().contains(key);
+        Predicate<Person> compareBySurname = p -> p.getSurname().contains(key);
+        Predicate<Person> compareByAddress = p -> p.getSurname().contains(key);
+        Predicate<Person> compareByPhone = p -> p.getPhone().contains(key);
         for (Person person : persons) {
-            if (combine.test(person)) {
+            if (compareByName
+                    .or(compareBySurname)
+                    .or(compareByAddress)
+                    .or(compareByPhone)
+                    .test(person)) {
                 result.add(person);
             }
         }
