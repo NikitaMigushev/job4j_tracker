@@ -6,7 +6,7 @@ public class Cards {
     public static void main(String[] args) {
         Stream.of(Suit.values())
                 .flatMap(card -> Stream.of(Value.values())
-                        .map(value -> card + " " + value))
+                        .map(value -> new Card(card, value)))
                 .forEach(System.out::println);
     }
 }
