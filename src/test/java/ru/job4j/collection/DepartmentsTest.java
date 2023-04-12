@@ -58,7 +58,7 @@ public class DepartmentsTest {
                 "K2/SK1/SSK2",
                 "K2/SK1/SSK1"
         );
-        List<String> expect = Arrays.asList(
+        List<String> expect = List.of(
                 "K1",
                 "K1/SK1",
                 "K1/SK1/SSK1",
@@ -83,7 +83,7 @@ public class DepartmentsTest {
                 "K2/SK1/SSK2",
                 "K2/SK1/SSK1"
         );
-        List<String> expect = Arrays.asList(
+        List<String> expect = List.of(
                 "K1/SK1/SSK1",
                 "K1/SK1/SSK2",
                 "K1/SK2",
@@ -108,7 +108,7 @@ public class DepartmentsTest {
                 "K2/SK1/SSK2",
                 "K2/SK1/SSK1"
         );
-        List<String> expect = Arrays.asList(
+        List<String> expect = List.of(
                 "K2",
                 "K2/SK1",
                 "K2/SK1/SSK1",
@@ -134,7 +134,7 @@ public class DepartmentsTest {
                 "K2/SK1/SSK2",
                 "K2/SK1/SSK1"
         );
-        List<String> expect = Arrays.asList(
+        List<String> expect = List.of(
                 "K2/SK1",
                 "K2/SK1/SSK1",
                 "K2/SK1/SSK2",
