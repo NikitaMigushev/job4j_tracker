@@ -67,18 +67,18 @@ public class SqlTracker implements Store {
     @Override
     public Item add(Item item) {
         Item addedItem = item;
-        String query = "INSERT INTO ITEMS (name, created) VALUES (?, ?) RETURNING id";
+        String query = "INSERT INTO ITEMS (name, created) VALUES (?, ?)";
         int id = -1;
-        try (PreparedStatement statement = prepareStatement(query, item.getName(), new Timestamp(System.currentTimeMillis()))) {
-            statement.execute();
+        try (PreparedStatement statement = prepareStatement(query, item.getName(), new java.sql.Timestamp(System.currentTimeMillis()))) {
+            statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
             if (resultSet.next()) {
-                id = resultSet.getInt(1);
+                addedItem.setId(resultSet.getInt(1));
+                addedItem.setCreated(resultSet.getTimestamp(3).toLocalDateTime());
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        addedItem.setId(id);
         return addedItem;
     }
 
