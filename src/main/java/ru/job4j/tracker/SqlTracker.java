@@ -59,7 +59,7 @@ public class SqlTracker implements Store {
     @Override
     public Item add(Item item) {
         Item addedItem = item;
-        String query = "INSERT INTO ITEMS (name, createddate) VALUES (?, ?) RETURNING id";
+        String query = "INSERT INTO ITEMS (name, created) VALUES (?, ?) RETURNING id";
         int id = -1;
         try (PreparedStatement statement = prepareStatement(query, item.getName(), new Timestamp(System.currentTimeMillis()))) {
             statement.execute();
