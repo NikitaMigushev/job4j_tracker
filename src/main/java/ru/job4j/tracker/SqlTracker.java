@@ -49,6 +49,14 @@ public class SqlTracker implements Store {
         return statement;
     }
 
+    private Item retrieveItem(ResultSet resultSet) throws SQLException {
+        Item showItem = new Item(
+                resultSet.getInt("id"),
+                resultSet.getString("name"));
+        showItem.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
+        return showItem;
+    }
+
     @Override
     public void close() throws SQLException {
         if (cn != null) {
@@ -107,10 +115,7 @@ public class SqlTracker implements Store {
         try (PreparedStatement statement = prepareStatement(query)) {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    items.add(new Item(
-                            resultSet.getInt("id"),
-                            resultSet.getString("name")
-                    ));
+                    items.add(retrieveItem(resultSet));
                 }
             }
         } catch (SQLException e) {
@@ -126,10 +131,7 @@ public class SqlTracker implements Store {
         try (PreparedStatement statement = prepareStatement(query, key)) {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    items.add(new Item(
-                            resultSet.getInt("id"),
-                            resultSet.getString("name")
-                    ));
+                    items.add(retrieveItem(resultSet));
                 }
             }
         } catch (Exception e) {
@@ -145,8 +147,7 @@ public class SqlTracker implements Store {
         try (PreparedStatement statement = prepareStatement(query, id)) {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                item.setId(id);
-                item.setName(resultSet.getString("name"));
+                item = retrieveItem(resultSet);
             }
         } catch (Exception e) {
             e.printStackTrace();
