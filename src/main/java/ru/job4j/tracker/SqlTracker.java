@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -72,10 +73,20 @@ public class SqlTracker implements Store {
         int id = -1;
         try (PreparedStatement statement = prepareStatement(query, item.getName(), new java.sql.Timestamp(System.currentTimeMillis()))) {
             statement.executeUpdate();
-            ResultSet resultSet = statement.getGeneratedKeys();
-            if (resultSet.next()) {
-                addedItem.setId(resultSet.getInt(1));
-                addedItem.setCreated(resultSet.getTimestamp(3).toLocalDateTime());
+            ResultSet generatedKeys = statement.getGeneratedKeys();
+            ResultSet result = null;
+            if (generatedKeys.next()) {
+                id = generatedKeys.getInt(1);
+                String selectQuery = "SELECT id, name, created FROM items where id = ?";
+                try (PreparedStatement selectStatement = prepareStatement(selectQuery, id)) {
+                    result = selectStatement.executeQuery();
+                    if (result != null && result.next()) {
+                        id = result.getInt("id");
+                        LocalDateTime created = result.getTimestamp("created").toLocalDateTime();
+                        addedItem.setId(id);
+                        addedItem.setCreated(created);
+                    }
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -149,6 +160,8 @@ public class SqlTracker implements Store {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 item = retrieveItem(resultSet);
+            } else {
+                item = null;
             }
         } catch (Exception e) {
             e.printStackTrace();
