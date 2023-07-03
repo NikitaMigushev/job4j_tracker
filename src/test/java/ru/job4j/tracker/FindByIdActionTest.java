@@ -21,6 +21,6 @@ class FindByIdActionTest {
         System.out.println("check here");
         String ln = System.lineSeparator();
         assertThat(out.toString()).contains("=== Find item by id ===" + ln
-                + "Item{id=1, name='TestItem'");
+                + "Item(id=1, name=TestItem");
     }
 }

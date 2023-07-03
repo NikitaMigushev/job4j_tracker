@@ -20,6 +20,6 @@ class FindByIdNameTest {
         System.out.println("check here");
         String ln = System.lineSeparator();
         assertThat(out.toString()).contains("=== Find items by name ===" + ln
-                + "Item{id=1, name='TestItem'");
+                + "Item(id=1, name=TestItem");
     }
 }
