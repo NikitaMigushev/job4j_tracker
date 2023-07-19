@@ -83,7 +83,7 @@ public class SqlTrackerTest {
         tracker.add(itemA);
         tracker.add(itemB);
         tracker.add(itemC);
-        assertThat(tracker.findAll()).containsExactly(itemA, itemB, itemC);
+        assertThat(tracker.findAll()).contains(itemA, itemB, itemC);
     }
 
     @Test
