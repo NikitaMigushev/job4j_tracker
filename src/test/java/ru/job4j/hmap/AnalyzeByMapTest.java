@@ -138,8 +138,6 @@ class AnalyzeByMapTest {
         ));
     }
 
-
-
     @Test
     public void whenBestPupil() {
         Label best = AnalyzeByMap.bestStudent(
