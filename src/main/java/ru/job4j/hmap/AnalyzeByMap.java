@@ -46,6 +46,20 @@ public class AnalyzeByMap {
         return result;
     }
 
+    public static List<Label> averageScoreBySubjectMerge(List<Pupil> pupils) {
+        List<Label> result = new ArrayList<>();
+        Map<String, Integer> scoreBySubject = new LinkedHashMap<>();
+        for (Pupil pupil : pupils) {
+            for (Subject subject : pupil.subjects()) {
+                scoreBySubject.merge(subject.name(), subject.score(), (oldValue, newValue) -> oldValue + subject.score());
+            }
+        }
+        for (Map.Entry<String, Integer> entry : scoreBySubject.entrySet()) {
+            result.add(new Label(entry.getKey(), entry.getValue() / pupils.size()));
+        }
+        return result;
+    }
+
     public static Label bestStudent(List<Pupil> pupils) {
         List<Label> result = new ArrayList<>();
         for (Pupil pupil : pupils) {
@@ -66,6 +80,21 @@ public class AnalyzeByMap {
             for (Subject subject : pupil.subjects()) {
                 scoreBySubject.put(
                         subject.name(), scoreBySubject.getOrDefault(subject.name(), 0) + subject.score());
+            }
+        }
+        for (Map.Entry<String, Integer> entry : scoreBySubject.entrySet()) {
+            result.add(new Label(entry.getKey(), entry.getValue()));
+        }
+        result.sort(Comparator.naturalOrder());
+        return result.get(result.size() - 1);
+    }
+
+    public static Label bestSubjectMerge(List<Pupil> pupils) {
+        List<Label> result = new ArrayList<>();
+        Map<String, Integer> scoreBySubject = new LinkedHashMap<>();
+        for (Pupil pupil : pupils) {
+            for (Subject subject : pupil.subjects()) {
+                scoreBySubject.merge(subject.name(), subject.score(), (oldValue, newValue) -> oldValue + newValue);
             }
         }
         for (Map.Entry<String, Integer> entry : scoreBySubject.entrySet()) {
