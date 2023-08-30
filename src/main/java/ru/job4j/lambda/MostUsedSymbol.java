@@ -7,15 +7,6 @@ public class MostUsedSymbol {
     public static void main(String[] args) {
         String input = "slogan of java language: write once, run everywhere".replaceAll(" ", "");
         Map<Character, Integer> map = new HashMap<>();
-//        for (char character : input.toCharArray()) {
-//            Integer temp = map.get(character);
-//            if (temp != null) {
-//                map.put(character, temp + 1);
-//            } else {
-//                map.put(character, 1);
-//            }
-//        }
-
         for (char character : input.toCharArray()) {
             map.merge(character, 1, (oldValue, newValue) -> oldValue + 1);
         }
